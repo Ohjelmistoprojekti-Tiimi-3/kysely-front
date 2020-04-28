@@ -1,26 +1,61 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+import { BrowserRouter, Route, Switch } from 'react-router-dom'; 
+import CssBaseline from '@material-ui/core/CssBaseline';
+
+import Kyselyt from './kysely/kyselyt';
+import Kysely from './kysely/kysely';
+import Vastaa from './kysely/vastaa';
+
+const theme = createMuiTheme({
+    palette: {
+        primary: {main: '#2b2b2b', contrastText: '#FFFFFF'},
+        secondary: {main: '#232323', contrastText: '#FFFFFF'},
+        text: {primary: '#FFFFFF', secondary: '#bdbdbd' },
+        background: {default: '#1a1a1a'}
+    },
+    overrides:{
+        MuiExpansionPanelSummary: {
+            root: {
+                backgroundColor: '#2D2D2D',
+                borderBottom: '1px solid #151515',
+                minHeight: 20,
+                marginBottom: -5,
+                '&$expanded': {
+                  minHeight: 20,
+                }   
+            },
+              content: {
+                '&$expanded': {
+                  margin: '12px 0',
+                }
+            }
+        },
+        MuiExpansionPanelDetails: {
+            root:{
+                backgroundColor: '#262626',
+                paddingBottom: 8,
+                paddingTop: 10,
+            }
+        }
+    }
+});
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return(
+        <MuiThemeProvider theme={ theme }>
+            <BrowserRouter>
+            <div>
+                <CssBaseline />
+                <Switch>
+                    <Route exact path='/kyselyt' component={ Kyselyt } />
+                    <Route path='/kysely/:id' component={ Kysely } />
+                    <Route path='/vastaa/:id' component={ Vastaa } />
+                </Switch> 
+            </div>
+            </BrowserRouter>
+        </MuiThemeProvider>
+    );
 }
 
 export default App;
