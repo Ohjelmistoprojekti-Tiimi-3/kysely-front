@@ -6,6 +6,7 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import Kyselyt from './kysely/kyselyt';
 import Kysely from './kysely/kysely';
 import Vastaa from './kysely/vastaa';
+import Vastaukset from './kysely/vastaukset';
 
 const theme = createMuiTheme({
     palette: {
@@ -51,6 +52,7 @@ function App() {
                     <Route exact path='/kyselyt' component={ Kyselyt } />
                     <Route path='/kysely/:id' component={ Kysely } />
                     <Route path='/vastaa/:id' component={ Vastaa } />
+                    <Route exact path='/vastaukset/' component={  Vastaukset } />
                 </Switch> 
             </div>
             </BrowserRouter>
