@@ -52,7 +52,7 @@ function App() {
                     <Route exact path='/kyselyt' component={ Kyselyt } />
                     <Route path='/kysely/:id' component={ Kysely } />
                     <Route path='/vastaa/:id' component={ Vastaa } />
-                    <Route exact path='/vastaukset/' component={  Vastaukset } />
+                    <Route path='/vastaukset/' component={  Vastaukset } />
                 </Switch> 
             </div>
             </BrowserRouter>
