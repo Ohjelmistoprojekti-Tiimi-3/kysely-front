@@ -21,7 +21,8 @@ function Vastaukset() {
 return (
     <div>
         {vastaukset.map(vastaus =>
-            <li>{vastaus}</li>)}
+            <li key={vastaus.id}>    {vastaus.answer}
+            </li>)}
     </div>
 )
 
