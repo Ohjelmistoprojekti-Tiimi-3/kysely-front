@@ -64,9 +64,8 @@ function Kyselyt() {
                             </ExpansionPanelSummary>
                             <ExpansionPanelDetails>
                                 <Button aria-label="answer" variant="contained" color="primary"
-                                    component={Link} to={'/vastaukset/' + id}>
+                                    component={Link} onClick={naytaVastaukset} to={'/vastaukset/' + id}>
                                     <Typography>Näytä vastaukset</Typography>
-                                    {naytaVastaukset}
                                 </Button>
                                 <Vastaukset />
                                 <Grid container alignItems="center" justify="center">
