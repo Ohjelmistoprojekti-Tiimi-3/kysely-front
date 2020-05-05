@@ -10,6 +10,7 @@ import Button from '@material-ui/core/Button';
 import QuestionAnswerIcon from '@material-ui/icons/QuestionAnswer';
 import { Link } from 'react-router-dom';
 import { useParams } from 'react-router';
+import Vastaukset from './vastaukset';
 
 function Kyselyt() {
 
@@ -57,6 +58,10 @@ function Kyselyt() {
                                         </Typography>
                                     </ExpansionPanelSummary>
                                     <ExpansionPanelDetails>
+                                    <Button aria-label="answer" variant="contained" color="primary"
+                                            component={Link} to ={'/vastaukset/' + id}>
+                                        <Typography>Näytä vastaukset</Typography>            
+                                    </Button>
                                         <Grid container alignItems="center" justify="center">
                                         <Grid item xs={11}>
                                             <Typography>
