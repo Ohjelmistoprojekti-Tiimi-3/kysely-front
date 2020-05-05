@@ -17,7 +17,7 @@ function Kyselyt() {
     let { id } = useParams();
     const [kyselyt, setKyselyt] = React.useState();
     const [virhe, setVirhe] = React.useState('Haetaan...');
-    const [open, setOpen] = useState(false);
+    const [open, setOpen] = React.useState(false);
 
     const fetchUrl = async () => {
         try {
@@ -31,6 +31,10 @@ function Kyselyt() {
         } catch (error) {
             setVirhe('Nyt meni jokin väärin.');
         }
+    }
+
+    const naytaVastaukset = () => {
+        setOpen(true);
     }
 
 
@@ -62,7 +66,7 @@ function Kyselyt() {
                                 <Button aria-label="answer" variant="contained" color="primary"
                                     component={Link} to={'/vastaukset/' + id}>
                                     <Typography>Näytä vastaukset</Typography>
-                                    {setOpen(true)};
+                                    {naytaVastaukset}
                                 </Button>
                                 <Vastaukset />
                                 <Grid container alignItems="center" justify="center">
