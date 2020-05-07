@@ -11,7 +11,7 @@ function Vastaukset() {
     }, [])
 
     const getVastaukset = () => {
-        fetch('http://localhost:8080/api/kysymys/' + id)
+        fetch('http://localhost:8080/api/kysely/' + id)
         .then(response => response.json())
         .then(data => setVastaukset(data.answer))
         .catch(err => console.error(err))
