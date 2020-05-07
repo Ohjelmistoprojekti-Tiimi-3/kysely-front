@@ -5,6 +5,9 @@ import ExpansionPanel from '@material-ui/core/ExpansionPanel';
 import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import Card from '@material-ui/core/Card';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
 import IconButton from '@material-ui/core/IconButton';
 import Button from '@material-ui/core/Button';
 import QuestionAnswerIcon from '@material-ui/icons/QuestionAnswer';
@@ -63,10 +66,10 @@ function Kyselyt() {
                                 </Typography>
                             </ExpansionPanelSummary>
                             <ExpansionPanelDetails>
-                                <Button aria-label="answer" variant="contained" color="primary"
+                                {/*<Button aria-label="answer" variant="contained" color="primary"
                                     component={Link} onClick={naytaVastaukset} to={'/vastaukset/' + id}>
                                     <Typography>Näytä vastaukset</Typography>
-                                </Button>
+                                </Button>*/}
                                 <Vastaukset />
                                 <Grid container alignItems="center" justify="center">
                                     <Grid item xs={11}>
@@ -88,13 +91,20 @@ function Kyselyt() {
                                             <Typography>{kysymykset.questionString}</Typography>
                                             <QuestionAnswerIcon style={{ color: '#FFFFFF' }} />
                                         </Button>
-
+                                        <div style={{ height:10 }} />
                                         {/* VASTAUS MAPPI ALKAA */}
                                         {
                                         kysymykset.answer.map (vastaukset => {
                                             return (
                                                 <div>
+
+                                                    <Card>
+                                                    <CardContent>
                                                     {vastaukset.answer}
+                                                    </CardContent>
+                                                    </Card>
+                                                
+                                                <div style={{ height:5 }} />
                                                 </div>
                                             )
                                         })
