@@ -88,6 +88,19 @@ function Kyselyt() {
                                             <Typography>{kysymykset.questionString}</Typography>
                                             <QuestionAnswerIcon style={{ color: '#FFFFFF' }} />
                                         </Button>
+
+                                        {/* VASTAUS MAPPI ALKAA */}
+                                        {
+                                        kysymykset.answer.map (vastaukset => {
+                                            return (
+                                                <div>
+                                                    {vastaukset.answer}
+                                                </div>
+                                            )
+                                        })
+                                        }
+                                        {/* VASTAUS MAPPI LOPPUU */}
+                                        
                                     </div>
                                 )
                             })
