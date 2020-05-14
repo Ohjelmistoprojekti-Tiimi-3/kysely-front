@@ -1,27 +1,28 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router";
 
-function Vastaukset() {
+function Vaihtoehdot() {
   let { id } = useParams();
-  const [vastaukset, setVastaukset] = useState([]);
+  const [vaihtoehdot, setVaihtoehdot] = useState([]);
 
   useEffect(() => {
-    getVastaukset();
+    getVaihtoehdot();
   }, []);
 
-  const getVastaukset = () => {
+  const getVaihtoehdot = () => {
     fetch("http://localhost:8080/api/kysely/" + id)
       .then((response) => response.json())
-      .then((data) => setVastaukset(data.answer))
+      .then((data) => setVaihtoehdot(data.option))
       .catch((err) => console.error(err));
   };
+
   return (
     <div>
-      {vastaukset.map((vastaus) => (
-        <li key={vastaus.id}> {vastaus.answer}</li>
+      {vaihtoehdot.map((vaihtoehto) => (
+        <li key={vaihtoehto.id}> {vaihtoehto.option}</li>
       ))}
     </div>
   );
 }
 
-export default Vastaukset;
+export default Vaihtoehdot;
