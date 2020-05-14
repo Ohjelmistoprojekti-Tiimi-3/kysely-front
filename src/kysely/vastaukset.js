@@ -10,18 +10,21 @@ function Vastaukset() {
   }, []);
 
   const getVastaukset = () => {
-    fetch("http://localhost:8080/api/kysely/" + id)
+    fetch("http://localhost:8080/api/kyselyt/" + id)
       .then((response) => response.json())
       .then((data) => setVastaukset(data.answer))
-      .catch((err) => console.error(err));
+      .catch((err) => {
+        console.error(err);
+      });
   };
   return (
     <div>
       {vastaukset.map((vastaus) => (
-        <li key={vastaus.id}> {vastaus.answer}</li>
+        <li key={vastaus.id}> {vastaus.answer} </li>
       ))}
     </div>
   );
 }
 
 export default Vastaukset;
+//

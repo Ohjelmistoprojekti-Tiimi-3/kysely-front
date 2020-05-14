@@ -12,6 +12,8 @@ function Vastaa() {
   const [vastaus, setVastaus] = React.useState({
     answer: "",
   });
+  //const [vaihtoehto, setVaihtoehto] React.useState({option: "", });
+
   const [virhe, setVirhe] = React.useState("Haetaan...");
 
   const fetchUrl = async () => {
