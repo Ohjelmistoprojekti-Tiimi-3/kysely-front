@@ -38,7 +38,7 @@ function Vastaa() {
   };
 
   //Vastauksen lisäys
-  const addVastaus = (e) => {
+  /* const addVastaus = (e) => {
     e.preventDefault();
     if (vastaus.length === 0) {
       setVirhe("Virhe, kenttä on tyhjä.");
@@ -47,7 +47,7 @@ function Vastaa() {
       setVirhe("Added succesfully.");
     }
   };
-
+*/
   const sendResponse = () => {
     fetch("http://localhost:8080/api/tallennavastaus/" + id, {
       method: "POST",
@@ -80,8 +80,8 @@ function Vastaa() {
               <TextField
                 fullWidth
                 label="Vastaus"
-                name="answer"
-                value={vastaus.answer}
+                name="answerText"
+                value={vastaus.answerText}
                 onChange={(e) => muuta(e)}
               />
               <br />

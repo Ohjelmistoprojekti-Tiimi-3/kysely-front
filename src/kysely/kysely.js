@@ -20,7 +20,7 @@ function Kyselyt() {
   let { id } = useParams();
   const [kyselyt, setKyselyt] = React.useState();
   const [virhe, setVirhe] = React.useState("Haetaan...");
-  const [open, setOpen] = React.useState(false);
+  // const [open, setOpen] = React.useState(false);
 
   const fetchUrl = async () => {
     try {
@@ -35,10 +35,10 @@ function Kyselyt() {
     }
   };
 
-  const naytaVastaukset = () => {
+  /* const naytaVastaukset = () => {
     setOpen(true);
   };
-
+*/
   React.useEffect(() => {
     fetchUrl();
   }, []);
@@ -69,7 +69,7 @@ function Kyselyt() {
                                     component={Link} onClick={naytaVastaukset} to={'/vastaukset/' + id}>
                                     <Typography>Näytä vastaukset</Typography>
                                 </Button>*/}
-                {/**<Vastaukset /> tuli näkyviin kysely, kun kommenteissa*/}
+                {/**<Vastaukset /> tuli näkyviin kysely, kun tämä kommenteissa*/}
                 <Grid container alignItems="center" justify="center">
                   <Grid item xs={11}>
                     <Typography>
@@ -83,7 +83,7 @@ function Kyselyt() {
             {/*tähän näin kysymys mappi*/}
             {kyselyt.questions.map((kysymykset) => {
               return (
-                <div style={{ margin: 20 }}>
+                <div key={kysymykset.questionId} style={{ margin: 20 }}>
                   <Button
                     aria-label="answer"
                     variant="contained"
@@ -92,7 +92,8 @@ function Kyselyt() {
                     to={"/vastaa/" + kysymykset.questionId}
                   >
                     <Typography>{kysymykset.questionString}</Typography>
-                    {/*<Typography>{kysymykset.optionText}</Typography> */}
+                    {/*<Typography>{kysymykset.option.optionText}</Typography>*/}
+                    <Typography></Typography>
                     <QuestionAnswerIcon style={{ color: "#FFFFFF" }} />
                   </Button>
                   <div style={{ height: 10 }} />
@@ -110,7 +111,7 @@ function Kyselyt() {
                   {/* VASTAUS MAPPI ALKAA */}
                   {kysymykset.answer.map((vastaukset) => {
                     return (
-                      <div>
+                      <div key={vastaukset.id}>
                         <Card>
                           <CardContent>{vastaukset.answerText}</CardContent>{" "}
                           {/*Muutettiin vastaukset.answer */}
