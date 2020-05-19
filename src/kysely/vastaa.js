@@ -17,7 +17,7 @@ function Vastaa() {
 
     const fetchUrl = async () => {
         try {
-            const response = await fetch('http://localhost:8080/api/kysymys/' + id);
+            const response = await fetch('https://kyselyappi.herokuapp.com/api/kysymys/' + id);
             const json = await response.json();
             setKysymys(json);
             setVirhe('');
@@ -51,7 +51,7 @@ function Vastaa() {
 
     const sendResponse = () => {
  
-        fetch('http://localhost:8080/api/tallennavastaus/' + id, {
+        fetch('https://kyselyappi.herokuapp.com/api/tallennavastaus/' + id, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'

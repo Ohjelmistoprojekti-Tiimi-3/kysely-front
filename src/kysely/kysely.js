@@ -19,7 +19,7 @@ function Kyselyt() {
 
     const fetchUrl = async () => {
         try {
-            const response = await fetch('http://localhost:8080/api/kyselyt/' + id);
+            const response = await fetch('https://kyselyappi.herokuapp.com/api/kyselyt/' + id);
             const json = await response.json();
             setKyselyt(json);
             setVirhe('');
