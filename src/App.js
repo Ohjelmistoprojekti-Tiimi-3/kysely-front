@@ -8,6 +8,7 @@ import Kysely from "./kysely/kysely";
 import Vastaa from "./kysely/vastaa";
 import Vastaukset from "./kysely/vastaukset";
 import Vaihtoehdot from "./kysely/vaihtoehdot";
+import Radiobutton from "./kysely/radio";
 
 const theme = createMuiTheme({
   palette: {
@@ -60,6 +61,7 @@ function App() {
             <Route path="/vastaa/:id" component={Vastaa} />
             <Route path="/vastaukset/:id" component={Vastaukset} />
             <Route path="/vaihtoehdot/:id" component={Vaihtoehdot} />
+            <Route path="/radio/:id" component={Radiobutton} />
           </Switch>
         </div>
       </BrowserRouter>
