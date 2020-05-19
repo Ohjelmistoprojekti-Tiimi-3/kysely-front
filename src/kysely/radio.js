@@ -9,12 +9,12 @@ import FormControl from '@material-ui/core/FormControl';
 
 export default function Radiobutton() {
     let {id} = useParams();
-    const [value, setValue] = React.useState();
+    const [valinta, setValinta] = React.useState();
     const [vaihtoehdot, setVaihtoehdot] = useState([]);
 
 
     const handleChange = (event) => {
-        setValue(event.target.value);
+        setValinta(event.target.value);
     };
 
     useEffect(() => {
@@ -29,26 +29,27 @@ export default function Radiobutton() {
     };
 
     const handleSubmit = () => {
-        fetch("http://localhost:8080/api/tallennavaihtoehto/" + value)
-            .catch((err) => console.error(err));
+        fetch("http://localhost:8080/api/tallennavaihtoehto/" + valinta, {
+            method:"POST"
+        }).catch((err) => console.log(err));
     };
 
-    console.log(value);
+    console.log(valinta);
 
 
     return (
-        <form onSubmit={handleSubmit}>
+        <FormControl  onSubmit={handleSubmit}>
             <FormControl component="fieldset">
-                <RadioGroup aria-label="vaihtoehto" name="optionText" value={value} onChange={handleChange}>
+                <RadioGroup aria-label="vaihtoehto" name="optionText"  onClick={handleChange}>
                     {vaihtoehdot.map((vaihtoehto) => (
-                        <FormControlLabel key={vaihtoehto.optionId} value={vaihtoehto.optionId} control={<Radio/>}
-                                          label={vaihtoehto.optionText}> </FormControlLabel>
+                        <FormControlLabel key={vaihtoehto.optionId} value={vaihtoehto.optionId.toString()} control={<Radio/>}
+                                          label={vaihtoehto.optionText} className="genre-item"> </FormControlLabel>
                     ))}
                 </RadioGroup>
             </FormControl>
-            <Button type="submit" style={{color: "Green"}} variant="outlined" color="primary">
+            <Button onClick={_ => handleSubmit()} style={{color: "Green"}} variant="outlined" color="primary">
                 Lähetä
             </Button>
-        </form>
+        </FormControl >
     );
 }
