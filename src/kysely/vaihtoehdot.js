@@ -10,7 +10,7 @@ function Vaihtoehdot() {
   }, []);
 
   const getVaihtoehdot = () => {
-    fetch("http://localhost:8080/api/kyselyt/" + id)
+    fetch("https://kyselyappi.herokuapp.com/api/kyselyt/" + id)
       .then((response) => response.json())
       .then((data) => setVaihtoehdot(data.option))
       .catch((err) => console.error(err));

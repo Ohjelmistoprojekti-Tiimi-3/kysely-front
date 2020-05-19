@@ -10,7 +10,7 @@ function Vastaukset() {
   }, []);
 
   const getVastaukset = () => {
-    fetch("http://localhost:8080/api/kyselyt/" + id)
+    fetch("https://kyselyappi.herokuapp.com/api/kyselyt/" + id)
       .then((response) => response.json())
       .then((data) => setVastaukset(data.answer))
       .catch((err) => {

@@ -23,7 +23,7 @@ export default function Radiobutton() {
     }, []);
 
     const getVaihtoehdot = () => {
-        fetch("http://localhost:8080/api/kysymys/" + id)
+        fetch("https://kyselyappi.herokuapp.com/api/kysymys/" + id)
             .then((response) => response.json())
             .then((data) => setVaihtoehdot(data.option))
             .catch((err) => console.error(err));
