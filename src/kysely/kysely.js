@@ -15,6 +15,10 @@ import { Link } from "react-router-dom";
 import { useParams } from "react-router";
 import Vastaukset from "./vastaukset";
 import Vaihtoehdot from "./vaihtoehdot";
+import Radio from "./radio";
+import { browserHistory } from "react-router";
+import { withRouter } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 
 function Kyselyt() {
   let { id } = useParams();
@@ -50,6 +54,23 @@ function Kyselyt() {
       </Grid>
     );
   }
+  /**const getVastaukset = () => {
+    fetch("http://localhost:8080/api/kyselyt/" + id)
+      .then((response) => response.json())
+      .then((data) => setVastaukset(data.answer))
+      .catch((err) => {
+        console.error(err);
+      });
+  }; */
+
+  const handleOnClick = (event) => {
+    console.log(event);
+    if (event === "Radio") {
+      return <Link to="/radio"></Link>;
+    } else {
+      return <Link to="/vastaa"></Link>;
+    }
+  };
 
   return (
     <div>
@@ -80,7 +101,9 @@ function Kyselyt() {
                 </Grid>
               </ExpansionPanelDetails>
             </ExpansionPanel>
-            {/*tähän näin kysymys mappi*/}
+            {/*tähän näin kysymys mappi
+            to={"/vastaa/" + kysymykset.questionId}
+            component={Link}*/}
             {kyselyt.questions.map((kysymykset) => {
               return (
                 <div key={kysymykset.questionId} style={{ margin: 20 }}>
@@ -88,8 +111,7 @@ function Kyselyt() {
                     aria-label="answer"
                     variant="contained"
                     color="primary"
-                    component={Link}
-                    to={"/vastaa/" + kysymykset.questionId}
+                    onClick={(_) => handleOnClick(kysymykset.questionType.name)}
                   >
                     <Typography>{kysymykset.questionString}</Typography>
                     {/*<Typography>{kysymykset.option.optionText}</Typography>*/}
@@ -131,5 +153,4 @@ function Kyselyt() {
     </div>
   );
 }
-
 export default Kyselyt;
