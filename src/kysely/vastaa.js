@@ -5,6 +5,11 @@ import Button from "@material-ui/core/Button";
 import { Link } from "react-router-dom";
 import { useParams } from "react-router";
 import TextField from "@material-ui/core/TextField";
+import Radio from '@material-ui/core/Radio';
+import RadioGroup from '@material-ui/core/RadioGroup';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import FormControl from '@material-ui/core/FormControl';
+import FormLabel from '@material-ui/core/FormLabel';
 
 function Vastaa() {
   let { id } = useParams();
@@ -12,7 +17,13 @@ function Vastaa() {
   const [vastaus, setVastaus] = React.useState({
     answer: "",
   });
-  //const [vaihtoehto, setVaihtoehto] React.useState({option: "", });
+
+  const [vaihtoehto, setVaihtoehto] = React.useState({ option: "", });
+  // Radiobuttoniin
+  const [value, setValue] = React.useState({ option: "", });
+  const handleChange = (event) => {
+    setValue(event.target.value);
+  };
 
   const [virhe, setVirhe] = React.useState("Haetaan...");
 
@@ -62,14 +73,34 @@ function Vastaa() {
     fetchUrl();
   }, []);
 
-  if (virhe.length > 0) {
+  /*{kysymykset.option.map((vaihtoehdot) => {
+    return (
+      <div key={vaihtoehdot.id}>
+        <Card>
+          <CardContent>{vaihtoehdot.optionText}</CardContent>
+        </Card>
+      </div>
+    );
+  })}*/
+
+
+  if (vaihtoehto != null) {
+    {vaihtoehto.map((vaihtoehdot) => {
+    return (
+      <FormControl component="fieldset">
+        <RadioGroup aria-label="vaihtoehto" name="optionText" value={value} onChange={handleChange}>
+          <FormControlLabel value={vaihtoehdot.optionText} control={<Radio />} label={vaihtoehdot.optionText} />
+        </RadioGroup>
+      </FormControl>
+    )
+    })}
+  } else if (virhe.length > 0) {
     return (
       <Grid container spacing={3} alignItems="center" justify="center">
         <p>{virhe}</p>
       </Grid>
     );
-  }
-
+  } else {
   return (
     <div>
       {
@@ -100,6 +131,7 @@ function Vastaa() {
       }
     </div>
   );
+    }
 }
 
 export default Vastaa;

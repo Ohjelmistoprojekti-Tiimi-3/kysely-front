@@ -98,11 +98,11 @@ function Kyselyt() {
                   </Button>
                   <div style={{ height: 10 }} />
                   {/*VAIHTOEHTO MAPPI?*/}
-                  {/* {kysymykset.option.map((Vaihtoehdot) => {
+                  {/*{kysymykset.option.map((vaihtoehdot) => {
                     return (
-                      <div>
+                      <div key={vaihtoehdot.id}>
                         <Card>
-                          <CardContent>{Vaihtoehdot.option}</CardContent>
+                          <CardContent>{vaihtoehdot.optionText}</CardContent>
                         </Card>
                       </div>
                     );
