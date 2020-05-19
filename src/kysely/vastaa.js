@@ -3,9 +3,12 @@ import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
 import { useParams } from "react-router";
 import TextField from "@material-ui/core/TextField";
+import { useHistory } from "react-router-dom";
+
 
 function Vastaa() {
   let { id } = useParams();
+  let history = useHistory();
   const [kysymys, setKysymys] = React.useState("");
   const [vastaus, setVastaus] = React.useState({
     answer: "",
@@ -53,6 +56,7 @@ function Vastaa() {
       },
       body: JSON.stringify(vastaus),
     }).catch((err) => console.log(err));
+    history.push('/kyselyt/')
   };
 
   React.useEffect(() => {

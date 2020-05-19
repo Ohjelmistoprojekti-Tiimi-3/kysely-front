@@ -135,13 +135,8 @@ function Kyselyt() {
                   {/* VASTAUS MAPPI ALKAA */}
                   {kysymykset.answer.map((vastaukset) => {
                     return (
-                      <div key={vastaukset.id}>
-                        <Card>
-                          <CardContent>{vastaukset.answerText}</CardContent>{" "}
-                          {/*Muutettiin vastaukset.answer */}
-                        </Card>
+                    <div key={vastaukset.id}>
 
-                        <div style={{ height: 5 }} />
                       </div>
                     );
                   })}
