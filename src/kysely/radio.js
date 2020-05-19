@@ -5,13 +5,14 @@ import Button from '@material-ui/core/Button';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
+import { useHistory } from "react-router-dom";
 
 
 export default function Radiobutton() {
     let {id} = useParams();
     const [valinta, setValinta] = React.useState();
     const [vaihtoehdot, setVaihtoehdot] = useState([]);
-
+    let history = useHistory();
 
     const handleChange = (event) => {
         setValinta(event.target.value);
@@ -32,9 +33,12 @@ export default function Radiobutton() {
         fetch("http://localhost:8080/api/tallennavaihtoehto/" + valinta, {
             method:"POST"
         }).catch((err) => console.log(err));
+
+        history.push('/kyselyt')
     };
 
     console.log(valinta);
+
 
 
     return (

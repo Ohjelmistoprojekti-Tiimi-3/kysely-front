@@ -16,6 +16,7 @@ import { useParams } from "react-router";
 import Vastaukset from "./vastaukset";
 import Vaihtoehdot from "./vaihtoehdot";
 import Radio from "./radio";
+import { useHistory } from "react-router-dom";
 import { browserHistory } from "react-router";
 import { withRouter } from "react-router-dom";
 import { Redirect } from "react-router-dom";
@@ -24,6 +25,7 @@ function Kyselyt() {
   let { id } = useParams();
   const [kyselyt, setKyselyt] = React.useState();
   const [virhe, setVirhe] = React.useState("Haetaan...");
+  let history = useHistory();
   // const [open, setOpen] = React.useState(false);
 
   const fetchUrl = async () => {
@@ -65,10 +67,10 @@ function Kyselyt() {
 
   const handleOnClick = (event) => {
     console.log(event);
-    if (event === "Radio") {
-      return <Link to="/radio"></Link>;
+    if (event.questionType.name === "Radio") {
+      history.push('/radio/' + event.questionId)
     } else {
-      return <Link to="/vastaa"></Link>;
+      history.push('/vastaa/' + + event.questionId)
     }
   };
 
@@ -111,7 +113,7 @@ function Kyselyt() {
                     aria-label="answer"
                     variant="contained"
                     color="primary"
-                    onClick={(_) => handleOnClick(kysymykset.questionType.name)}
+                    onClick={(_) => handleOnClick(kysymykset)}
                   >
                     <Typography>{kysymykset.questionString}</Typography>
                     {/*<Typography>{kysymykset.option.optionText}</Typography>*/}
