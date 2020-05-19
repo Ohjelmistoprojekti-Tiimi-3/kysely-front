@@ -136,7 +136,12 @@ function Kyselyt() {
                   {kysymykset.answer.map((vastaukset) => {
                     return (
                     <div key={vastaukset.id}>
+                        <Card>
+                          <CardContent>{vastaukset.answerText}</CardContent>{" "}
+                          {/*Muutettiin vastaukset.answer */}
+                        </Card>
 
+                        <div style={{ height: 5 }} />
                       </div>
                     );
                   })}
